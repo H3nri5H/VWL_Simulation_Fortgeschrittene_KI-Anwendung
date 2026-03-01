@@ -1,6 +1,9 @@
 # VWL-Simulation-RL
 
 **Multi-Agent Reinforcement Learning Simulation for Economics**
+**Autoren: Nathan Blanck & Henri Herdel**
+**Modul: Fortgeschrittene KI-Anwendung**
+**Jahrgang: WINF123**
 
 
 ## Installation
