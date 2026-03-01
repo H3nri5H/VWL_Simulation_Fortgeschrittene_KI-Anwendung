@@ -1,0 +1,1 @@
+{"type": "Algorithm", "checkpoint_version": "1.1", "format": "cloudpickle", "state_file": "C:\\Users\\Admin\\AppData\\Local\\Temp\\tmpm0gv2tyx\\algorithm_state.pkl", "policy_ids": ["firm_3", "firm_8", "firm_9", "firm_0", "firm_1", "firm_2", "firm_6", "firm_7", "firm_4", "firm_5"], "ray_version": "2.52.1", "ray_commit": "4ebdc0abe5e5a551625fe7f87053c7e668a6ff74"}
