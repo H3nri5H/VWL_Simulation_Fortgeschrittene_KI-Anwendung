@@ -1,0 +1,147 @@
+# VWL SIMULATION - CONFIGURATION
+# Multi-Agent Reinforcement Learning Economy Simulation
+
+environment:
+  n_firms: 10
+  n_households: 3000
+  max_steps: 365
+
+initial_ranges:
+  firms:
+    price:
+      min: 25.0
+      max: 65.0
+    wage:
+      min: 18.0
+      max: 45.0
+    max_employees:
+      min: 10
+      max: 25
+    capital:
+      min: 80000.0
+      max: 120000.0
+    quality:
+      min: 0.20
+      max: 0.45
+    marketing:
+      min: 0.20
+      max: 0.50
+  
+  households:
+    money:
+      min: 1200.0
+      max: 1800.0
+    skill_level:
+      min: 0.25
+      max: 0.95
+    max_acceptable_price:
+      min: 10.0
+      max: 800.0
+    wealth_distribution:
+      low: 0.2      # 20% budget-conscious households
+      medium: 0.5   # 50% mainstream households
+      high: 0.3     # 30% premium-seeking households
+
+training:
+  iterations: 580
+  checkpoint_frequency: 20
+  
+  ppo:
+    learning_rate: 0.0003
+    gamma: 0.99
+    lambda: 0.95
+    clip_param: 0.2
+    train_batch_size: 4000
+    minibatch_size: 256
+    num_epochs: 10
+    entropy_coef: 0.01
+  
+  resources:
+    num_env_runners: 4
+    num_gpus: 0
+
+economy:
+  price_bounds:
+    min: 10.0
+    max: 1000.0
+  
+  wage_bounds:
+    min: 10.0
+    max: 500.0
+  
+  quality_bounds:
+    min: 0.1
+    max: 6.0
+  
+  marketing_bounds:
+    min: 0.1
+    max: 6.0
+  
+  max_employees_hard_cap: 250
+  
+  production:
+    productivity_per_employee: 12.0
+    cost_per_unit: 2.0
+    fixed_costs: 200.0
+    storage_cost_per_unit: 5.0
+    quality_cost_factor: 0.5        # Higher quality = higher production costs
+  
+  investment_costs:
+    marketing_per_level: 100.0
+    quality_improvement: 200.0
+    capacity_expansion: 500.0
+  
+  bankruptcy:
+    threshold: -2000.0
+    penalty_reward: -200.0          
+  
+  households:
+    consumption_rate: 0.4
+    
+    # Base utility weights (modified by wealth type)
+    utility_quality_weight: 0.5
+    utility_marketing_weight: 0.3
+    utility_price_weight: 1.0
+    
+    # Wealth-based modifiers
+    wealth_utility_modifiers:
+      low:
+        price_weight: 1.5           
+        quality_weight: 0.6
+        marketing_weight: 0.7
+      medium:
+        price_weight: 1.0           
+        quality_weight: 1.0
+        marketing_weight: 1.0
+      high:
+        price_weight: 0.5           
+        quality_weight: 1.8         
+        marketing_weight: 1.5
+    
+    wealth_multipliers:
+      low: 0.8
+      medium: 1.0
+      high: 1.2
+  
+  skill_system:
+    base_multiplier: 0.5
+    skill_factor: 0.5
+  
+  
+  reward:
+    
+    scale: 1000.0
+    capital_bonus_divisor: 1000.0
+    capital_bonus_max: 5.0
+    market_share_bonus: 10.0
+    inventory_penalty: 2.0
+    exploration_penalty: 5.0
+    
+    
+    diversity_bonus_weight: 10.0            
+    saturation_penalty_base: 20.0           
+    saturation_optimal_per_segment: 3
+    
+    
+    survivor_diversity_threshold: 5
+    survivor_diversity_penalty: 500         

@@ -24,10 +24,10 @@
 
 ```bash
 python -m venv .venv
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
-**Hinweis**: Wenn `venv\Scripts\activate` nicht funktioniert (PowerShell), versuche:
+**Hinweis**: Wenn `.venv\Scripts\activate` nicht funktioniert (PowerShell), versuche:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
