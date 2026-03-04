@@ -25,8 +25,7 @@ PIPFILE.lock
 
 # Virtual Environment
 .venv/
-ENV/
-env.bak/
+
 venv.bak/
 
 # IDEs
