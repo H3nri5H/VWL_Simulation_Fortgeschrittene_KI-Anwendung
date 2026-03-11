@@ -8,52 +8,45 @@
 
 **Jahrgang: WINF123**
 
-
-## Installation
+## Installation auf MacOS
 
 ### Voraussetzungen
 
-- **Python 3.11.9** 
-- **Git** (um das Repository zu klonen)
+- **Python 3.11.9**
+- **Git**
 
 ### Schritt 1: Repository klonen
 
-### Schritt 2: Python Virtual Environment erstellen
-
-#### Windows (CMD/PowerShell)
-
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
+git clone https://github.com/H3nri5H/VWL_Simulation_Fortgeschrittene_KI-Anwendung.git
 ```
 
-**Hinweis**: Wenn `.venv\Scripts\activate` nicht funktioniert (PowerShell), versuche:
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-venv\Scripts\Activate.ps1
-```
-
-### Schritt 3: Dependencies installieren
+### Schritt 2: Virtual Environment erstellen
 
 ```bash
-python.exe -m pip install --upgrade pip
+python -m venv venv
+source venv/bin/activate
+```
+
+### Schritt 3: Requirements installieren
+
+```bash
 pip install -r requirements.txt
 ```
 
-## ⚡ Schnellstart
-
-### 1. Training starten
+## 1. Training starten
 
 ```bash
-python train.py
+python train.py --resume
 ```
+
+"--resume" sorgt dafür, dass das Training beim letzten Checkpoint fortgeführt wird. Ohne das würde das Training bei Null beginnen.
 
 **Was passiert:**
 
 - Training läuft basierend auf der Anzahl an Iterationen die in der config.yaml gespeichert sind:
-    training:
-      iterations: 100
+  training:
+  iterations: 100
 - Checkpoints werden alle **20 Iterationen** gespeichert (auch festlegbar in der config)
 - Progress wird in der Console angezeigt
 
@@ -79,18 +72,7 @@ Iter   Reward       Min        Max        EpLen
 ...
 ```
 
-**Alternativ:**
-
-Um vorheriges Training nicht zu löschen empfehlen wir zum "Anschauen" folgenden Trainingsbefehl zu verwenden:
-
-```bash
-python train.py --resume
-```
-
-Auf diese Art wird ab dem letzten gespeichert Checkpoint das Training fortgesetzt und beginnt somit ncht von vorne.
-Das Training kann über Strg+C abgerochen werden. 
-
-### 2. Simulation ausführen
+## 2. Simulation ausführen
 
 ```bash
 python run_simulation.py
